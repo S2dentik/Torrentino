@@ -8,6 +8,15 @@ import libtorrent as lt
 import time
 import threading
 
+class DownloadStatus(object):
+    def __init__(self, progress, download_rate, upload_rate, num_peers, state, is_finished):
+        self.progress = progress
+        self.download_rate = download_rate
+        self.upload_rate = upload_rate
+        self.num_peers = num_peers
+        self.state = state
+        self.is_finished = is_finished
+
 class TorrentClient(object):
     def __init__(self, path):
         self.path = path
@@ -17,7 +26,7 @@ class TorrentClient(object):
         self.ses = lt.session()
         self.ses.listen_on(6881, 6891)
         
-    def download(self, link):
+    def download(self, link, handler):
         params = {
         'save_path': self.path,
         'storage_mode': lt.storage_mode_t(2),
@@ -27,17 +36,20 @@ class TorrentClient(object):
 
         handle = lt.add_magnet_uri(self.ses, link, params)
         self.ses.start_dht()
-        threading.Thread(target=self._download, args=(link, handle)).start()
+        threading.Thread(target=self._download, args=(link, handle, handler)).start()
 
-    def _download(self, link, handle):
+    def _download(self, link, handle, handler):
         print 'downloading metadata...'
         while (not handle.has_metadata()):
             time.sleep(1)
         print 'got metadata, starting torrent download...'
         while (handle.status().state != lt.torrent_status.seeding):
             s = handle.status()
-            state_str = ['queued', 'checking', 'downloading metadata', 'downloading', 'finished', 'seeding', 'allocating']
-            print '%.2f%% complete (down: %.1f kb/s up: %.1f kB/s peers: %d) %s' % \
-                    (s.progress * 100, s.download_rate / 1000, s.upload_rate / 1000, \
-                    s.num_peers, state_str[s.state])
-            time.sleep(5)
+            self.notify(s, handler)
+            time.sleep(2)
+        self.notify(handle.status(), handler)
+
+    def notify(self, s, handler):
+        state_str = ['Queued', 'Checking', 'Downloading Metadata', 'Downloading', 'Finished', 'Finished', 'Allocating']
+        is_finished = s.state in [lt.torrent_status.finished, lt.torrent_status.seeding]
+        handler(DownloadStatus(s.progress, s.download_rate / 1000, s.upload_rate / 1000, s.num_peers, state_str[s.state], is_finished))
