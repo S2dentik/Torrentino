@@ -7,15 +7,9 @@
 import libtorrent as lt
 import time
 import threading
+import json
 
-class DownloadStatus(object):
-    def __init__(self, progress, download_rate, upload_rate, num_peers, state, is_finished):
-        self.progress = progress
-        self.download_rate = download_rate
-        self.upload_rate = upload_rate
-        self.num_peers = num_peers
-        self.state = state
-        self.is_finished = is_finished
+from models import DownloadStatus
 
 class TorrentClient(object):
     def __init__(self, path):
@@ -40,6 +34,7 @@ class TorrentClient(object):
 
     def _download(self, link, handle, handler):
         print 'downloading metadata...'
+        handler(DownloadStatus(0, 0, 0, 0, "Downloading Metadata", False))
         while (not handle.has_metadata()):
             time.sleep(1)
         print 'got metadata, starting torrent download...'

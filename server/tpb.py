@@ -340,14 +340,6 @@ class Torrent(object):
         self._info = None
         self._files = {}
 
-    def size_in_bytes(self):
-        prefixes = ['B', 'K', 'M', 'G', 'T']
-        size_comps = self.size.split(' ')
-        for i in range(len(prefixes)):
-            if size_comps[1].startswith(prefixes[i]):
-                return float(size_comps[0]) * (1024 ** i)
-        return float(size_comps[0])
-
     @property
     def info(self):
         if self._info is None:
