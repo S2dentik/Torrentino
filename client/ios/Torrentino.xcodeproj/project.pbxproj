@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		175BD273228CAEC600F1E36E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BD272228CAEC600F1E36E /* AppDelegate.swift */; };
+		175BD275228CAEC600F1E36E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BD274228CAEC600F1E36E /* SearchViewController.swift */; };
+		175BD278228CAEC600F1E36E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175BD276228CAEC600F1E36E /* Main.storyboard */; };
+		175BD27A228CAEC700F1E36E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175BD279228CAEC700F1E36E /* Assets.xcassets */; };
+		175BD27D228CAEC700F1E36E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175BD27B228CAEC700F1E36E /* LaunchScreen.storyboard */; };
+		175BD285228CB16800F1E36E /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BD284228CB16800F1E36E /* Cell.swift */; };
+		175BD287228CE18900F1E36E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BD286228CE18900F1E36E /* API.swift */; };
+		175BD289228CF53900F1E36E /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175BD288228CF53900F1E36E /* Cell.xib */; };
+		175BD28B228CF62800F1E36E /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BD28A228CF62800F1E36E /* DownloadsViewController.swift */; };
+		177743D12290908F007D95B5 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177743D02290908F007D95B5 /* MoreViewController.swift */; };
+		D34C792467A9DC4AC550113C /* Pods_Torrentino.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03E61D95C8D406421AA641 /* Pods_Torrentino.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		175BD26F228CAEC600F1E36E /* Torrentino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Torrentino.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		175BD272228CAEC600F1E36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		175BD274228CAEC600F1E36E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		175BD277228CAEC600F1E36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		175BD279228CAEC700F1E36E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		175BD27C228CAEC700F1E36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		175BD27E228CAEC700F1E36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		175BD284228CB16800F1E36E /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		175BD286228CE18900F1E36E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		175BD288228CF53900F1E36E /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
+		175BD28A228CF62800F1E36E /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		177743D02290908F007D95B5 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		7C03E61D95C8D406421AA641 /* Pods_Torrentino.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Torrentino.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB8C2673134FE89DC75D1C3 /* Pods-Torrentino.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torrentino.release.xcconfig"; path = "Target Support Files/Pods-Torrentino/Pods-Torrentino.release.xcconfig"; sourceTree = "<group>"; };
+		FF63963D89430B1D8E211E47 /* Pods-Torrentino.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torrentino.debug.xcconfig"; path = "Target Support Files/Pods-Torrentino/Pods-Torrentino.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		175BD26C228CAEC600F1E36E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D34C792467A9DC4AC550113C /* Pods_Torrentino.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		175BD266228CAEC600F1E36E = {
+			isa = PBXGroup;
+			children = (
+				175BD271228CAEC600F1E36E /* Torrentino */,
+				175BD270228CAEC600F1E36E /* Products */,
+				88793B6EA24966B994322D13 /* Pods */,
+				D034970895139A43B2915DE0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		175BD270228CAEC600F1E36E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				175BD26F228CAEC600F1E36E /* Torrentino.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		175BD271228CAEC600F1E36E /* Torrentino */ = {
+			isa = PBXGroup;
+			children = (
+				175BD272228CAEC600F1E36E /* AppDelegate.swift */,
+				177743D22290A027007D95B5 /* API */,
+				177743D32290A030007D95B5 /* UI */,
+				177743D42290A040007D95B5 /* ViewControllers */,
+				175BD279228CAEC700F1E36E /* Assets.xcassets */,
+				175BD27E228CAEC700F1E36E /* Info.plist */,
+			);
+			path = Torrentino;
+			sourceTree = "<group>";
+		};
+		177743D22290A027007D95B5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				175BD286228CE18900F1E36E /* API.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		177743D32290A030007D95B5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				175BD284228CB16800F1E36E /* Cell.swift */,
+				175BD288228CF53900F1E36E /* Cell.xib */,
+				175BD276228CAEC600F1E36E /* Main.storyboard */,
+				175BD27B228CAEC700F1E36E /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		177743D42290A040007D95B5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				175BD274228CAEC600F1E36E /* SearchViewController.swift */,
+				175BD28A228CF62800F1E36E /* DownloadsViewController.swift */,
+				177743D02290908F007D95B5 /* MoreViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		88793B6EA24966B994322D13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF63963D89430B1D8E211E47 /* Pods-Torrentino.debug.xcconfig */,
+				FEB8C2673134FE89DC75D1C3 /* Pods-Torrentino.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D034970895139A43B2915DE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C03E61D95C8D406421AA641 /* Pods_Torrentino.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		175BD26E228CAEC600F1E36E /* Torrentino */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 175BD281228CAEC700F1E36E /* Build configuration list for PBXNativeTarget "Torrentino" */;
+			buildPhases = (
+				FF852CC3EC707AEBFD5AEFF1 /* [CP] Check Pods Manifest.lock */,
+				175BD26B228CAEC600F1E36E /* Sources */,
+				175BD26C228CAEC600F1E36E /* Frameworks */,
+				175BD26D228CAEC600F1E36E /* Resources */,
+				19D7C9D9636004AB4A2B5993 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Torrentino;
+			productName = Torrentino;
+			productReference = 175BD26F228CAEC600F1E36E /* Torrentino.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		175BD267228CAEC600F1E36E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Mihai Seremet";
+				TargetAttributes = {
+					175BD26E228CAEC600F1E36E = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 175BD26A228CAEC600F1E36E /* Build configuration list for PBXProject "Torrentino" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 175BD266228CAEC600F1E36E;
+			productRefGroup = 175BD270228CAEC600F1E36E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				175BD26E228CAEC600F1E36E /* Torrentino */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		175BD26D228CAEC600F1E36E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				175BD27D228CAEC700F1E36E /* LaunchScreen.storyboard in Resources */,
+				175BD289228CF53900F1E36E /* Cell.xib in Resources */,
+				175BD27A228CAEC700F1E36E /* Assets.xcassets in Resources */,
+				175BD278228CAEC600F1E36E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19D7C9D9636004AB4A2B5993 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Torrentino/Pods-Torrentino-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Torrentino/Pods-Torrentino-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF852CC3EC707AEBFD5AEFF1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Torrentino-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		175BD26B228CAEC600F1E36E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				175BD28B228CF62800F1E36E /* DownloadsViewController.swift in Sources */,
+				175BD275228CAEC600F1E36E /* SearchViewController.swift in Sources */,
+				175BD273228CAEC600F1E36E /* AppDelegate.swift in Sources */,
+				177743D12290908F007D95B5 /* MoreViewController.swift in Sources */,
+				175BD287228CE18900F1E36E /* API.swift in Sources */,
+				175BD285228CB16800F1E36E /* Cell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		175BD276228CAEC600F1E36E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				175BD277228CAEC600F1E36E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		175BD27B228CAEC700F1E36E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				175BD27C228CAEC700F1E36E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		175BD27F228CAEC700F1E36E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		175BD280228CAEC700F1E36E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		175BD282228CAEC700F1E36E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF63963D89430B1D8E211E47 /* Pods-Torrentino.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YMQZJ4527A;
+				INFOPLIST_FILE = Torrentino/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mseremet.Torrentino;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		175BD283228CAEC700F1E36E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEB8C2673134FE89DC75D1C3 /* Pods-Torrentino.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YMQZJ4527A;
+				INFOPLIST_FILE = Torrentino/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mseremet.Torrentino;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		175BD26A228CAEC600F1E36E /* Build configuration list for PBXProject "Torrentino" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				175BD27F228CAEC700F1E36E /* Debug */,
+				175BD280228CAEC700F1E36E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		175BD281228CAEC700F1E36E /* Build configuration list for PBXNativeTarget "Torrentino" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				175BD282228CAEC700F1E36E /* Debug */,
+				175BD283228CAEC700F1E36E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 175BD267228CAEC600F1E36E /* Project object */;
+}
