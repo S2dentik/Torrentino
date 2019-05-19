@@ -39,6 +39,37 @@ struct TorrentItem: Equatable, Decodable {
     }
 }
 
+final class FileNode: Decodable {
+    enum Kind: String, Decodable {
+        case file
+        case folder
+    }
+
+    let id: Int
+    let name: String
+    let type: Kind
+    let children: [FileNode]
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case type
+        case children
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        type = try container.decode(Kind.self, forKey: .type)
+        children = try container.decode([FileNode].self, forKey: .children)
+    }
+}
+
+struct VideoURL: Decodable {
+    let url: URL
+}
+
 struct IP: Codable {
     let part1: UInt8
     let part2: UInt8
@@ -217,6 +248,61 @@ final class API {
             task.resume()
             return Disposables.create(with: task.cancel)
         }.observeOn(MainScheduler.instance)
+    }
+
+    func getFiles(for id: String) -> Observable<[FileNode]> {
+        let url = host.url.appendingPathComponent("/files")
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        components.queryItems = [URLQueryItem(name: "id", value: id)]
+        let finalURL = components.url!
+        let request = URLRequest(url: finalURL)
+        return Observable<[FileNode]>.create { observer in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                if let error = error {
+                    observer.onError(error)
+                } else if let data = data {
+                    do {
+                        let models = try JSONDecoder().decode([FileNode].self, from: data)
+                        observer.onNext(models)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(error)
+                    }
+                } else {
+                    observer.onCompleted()
+                }
+            }
+            task.resume()
+            return Disposables.create(with: task.cancel)
+        }.observeOn(MainScheduler.instance)
+    }
+
+    func getVideoURL(for id: Int) -> Observable<VideoURL> {
+        return .just(VideoURL(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
+//        let url = host.url.appendingPathComponent("/video_url")
+//        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+//        components.queryItems = [URLQueryItem(name: "id", value: String(id))]
+//        let finalURL = components.url!
+//        let request = URLRequest(url: finalURL)
+//        return Observable<VideoURL>.create { observer in
+//            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+//                if let error = error {
+//                    observer.onError(error)
+//                } else if let data = data {
+//                    do {
+//                        let url = try JSONDecoder().decode(VideoURL.self, from: data)
+//                        observer.onNext(url)
+//                        observer.onCompleted()
+//                    } catch {
+//                        observer.onError(error)
+//                    }
+//                } else {
+//                    observer.onCompleted()
+//                }
+//            }
+//            task.resume()
+//            return Disposables.create(with: task.cancel)
+//        }.observeOn(MainScheduler.instance)
     }
 
     func getRecurentStatus() -> Observable<[TorrentItem]> {

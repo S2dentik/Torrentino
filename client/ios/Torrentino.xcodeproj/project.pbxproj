@@ -17,6 +17,8 @@
 		175BD289228CF53900F1E36E /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175BD288228CF53900F1E36E /* Cell.xib */; };
 		175BD28B228CF62800F1E36E /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BD28A228CF62800F1E36E /* DownloadsViewController.swift */; };
 		177743D12290908F007D95B5 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177743D02290908F007D95B5 /* MoreViewController.swift */; };
+		177A0AEC2291F44200F6EEBB /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A0AEB2291F44200F6EEBB /* FilesViewController.swift */; };
+		177A0AEE2292072400F6EEBB /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A0AED2292072400F6EEBB /* PlayerViewController.swift */; };
 		D34C792467A9DC4AC550113C /* Pods_Torrentino.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03E61D95C8D406421AA641 /* Pods_Torrentino.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		175BD288228CF53900F1E36E /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		175BD28A228CF62800F1E36E /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		177743D02290908F007D95B5 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		177A0AEB2291F44200F6EEBB /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
+		177A0AED2292072400F6EEBB /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		7C03E61D95C8D406421AA641 /* Pods_Torrentino.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Torrentino.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB8C2673134FE89DC75D1C3 /* Pods-Torrentino.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torrentino.release.xcconfig"; path = "Target Support Files/Pods-Torrentino/Pods-Torrentino.release.xcconfig"; sourceTree = "<group>"; };
 		FF63963D89430B1D8E211E47 /* Pods-Torrentino.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torrentino.debug.xcconfig"; path = "Target Support Files/Pods-Torrentino/Pods-Torrentino.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				175BD274228CAEC600F1E36E /* SearchViewController.swift */,
 				175BD28A228CF62800F1E36E /* DownloadsViewController.swift */,
 				177743D02290908F007D95B5 /* MoreViewController.swift */,
+				177A0AEB2291F44200F6EEBB /* FilesViewController.swift */,
+				177A0AED2292072400F6EEBB /* PlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Torrentino/Pods-Torrentino-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
+				"${BUILT_PRODUCTS_DIR}/LNZTreeView/LNZTreeView.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -216,6 +223,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LNZTreeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -255,7 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				175BD28B228CF62800F1E36E /* DownloadsViewController.swift in Sources */,
+				177A0AEE2292072400F6EEBB /* PlayerViewController.swift in Sources */,
 				175BD275228CAEC600F1E36E /* SearchViewController.swift in Sources */,
+				177A0AEC2291F44200F6EEBB /* FilesViewController.swift in Sources */,
 				175BD273228CAEC600F1E36E /* AppDelegate.swift in Sources */,
 				177743D12290908F007D95B5 /* MoreViewController.swift in Sources */,
 				175BD287228CE18900F1E36E /* API.swift in Sources */,

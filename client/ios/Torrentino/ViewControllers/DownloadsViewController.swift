@@ -84,6 +84,18 @@ extension DownloadsViewController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        guard item.status?.state == "Finished" else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controllerID = "FilesViewController"
+        let controller = storyboard.instantiateViewController(withIdentifier: controllerID) as! FilesViewController
+        controller.loadView()
+        controller.viewDidLoad()
+        controller.setup(with: item.id)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 extension DownloadsViewController: UICollectionViewDataSource {

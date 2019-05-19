@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="TUu-kl-AGN">
             <objects>
-                <viewController id="lYB-53-Uwm" customClass="SearchViewController" customModule="Torrentino" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="lYB-53-Uwm" customClass="SearchViewController" customModule="Torrentino" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AXW-nH-Amb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,10 +76,58 @@
             </objects>
             <point key="canvasLocation" x="580" y="-1217"/>
         </scene>
-        <!--Downloads View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Ydc-uC-mTY">
+            <objects>
+                <navigationController id="Vks-po-pcW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="SUC-HS-00O"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="iBi-xn-bb7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1764705882" green="0.1764705882" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="coH-Xg-iff" kind="relationship" relationship="rootViewController" id="hxN-3l-qgx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cch-x5-0NP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="-494"/>
+        </scene>
+        <!--Files-->
+        <scene sceneID="4Av-Qx-Opg">
+            <objects>
+                <viewController storyboardIdentifier="FilesViewController" title="Files" id="J5J-4a-hlf" customClass="FilesViewController" customModule="Torrentino" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UNr-5h-cR9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTo-Pe-M1P" customClass="LNZTreeView" customModule="LNZTreeView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="mfl-ZC-qXK" firstAttribute="trailing" secondItem="cTo-Pe-M1P" secondAttribute="trailing" id="4mf-c9-D4i"/>
+                            <constraint firstItem="mfl-ZC-qXK" firstAttribute="bottom" secondItem="cTo-Pe-M1P" secondAttribute="bottom" id="Wa0-W5-6zb"/>
+                            <constraint firstItem="cTo-Pe-M1P" firstAttribute="top" secondItem="mfl-ZC-qXK" secondAttribute="top" id="gkX-Qk-d7O"/>
+                            <constraint firstItem="cTo-Pe-M1P" firstAttribute="leading" secondItem="mfl-ZC-qXK" secondAttribute="leading" id="rnq-Ws-dbl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mfl-ZC-qXK"/>
+                    </view>
+                    <connections>
+                        <outlet property="treeView" destination="cTo-Pe-M1P" id="eZb-NV-zd1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqx-ef-Xq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2325" y="-494"/>
+        </scene>
+        <!--Downloads-->
         <scene sceneID="K5L-Gf-hXT">
             <objects>
-                <viewController id="coH-Xg-iff" customClass="DownloadsViewController" customModule="Torrentino" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Downloads" id="coH-Xg-iff" customClass="DownloadsViewController" customModule="Torrentino" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V4b-Rz-JtQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +139,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eK4-2Y-cDZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="8to-FF-Zmw">
                                     <size key="itemSize" width="334" height="102"/>
@@ -116,6 +164,7 @@
                     <tabBarItem key="tabBarItem" systemItem="downloads" id="ih6-8a-WCD">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" title="Downloads" id="zuT-7b-Yar"/>
                     <connections>
                         <outlet property="collectionView" destination="eK4-2Y-cDZ" id="rjC-V8-bo5"/>
                         <outlet property="noItemsLabel" destination="7uI-kS-MCQ" id="gX4-qb-JOQ"/>
@@ -123,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxx-6N-UyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="-510"/>
+            <point key="canvasLocation" x="1428" y="-494"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="SyX-NG-S7a">
@@ -258,8 +307,8 @@
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="coH-Xg-iff" kind="relationship" relationship="viewControllers" id="r5f-OG-uGK"/>
                         <segue destination="lYB-53-Uwm" kind="relationship" relationship="viewControllers" id="yeK-5G-CO8"/>
+                        <segue destination="Vks-po-pcW" kind="relationship" relationship="viewControllers" id="29b-pa-7c7"/>
                         <segue destination="1Qs-jV-TnR" kind="relationship" relationship="viewControllers" id="Zi9-gA-bMI"/>
                     </connections>
                 </tabBarController>

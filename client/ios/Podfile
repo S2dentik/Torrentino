@@ -8,6 +8,7 @@ target 'Torrentino' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Differ'
+  pod 'LNZTreeView'
 end
 
 post_install do |installer|

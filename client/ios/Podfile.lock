@@ -1,5 +1,6 @@
 PODS:
   - Differ (1.4.1)
+  - LNZTreeView (1.1.2)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -9,22 +10,25 @@ PODS:
 
 DEPENDENCIES:
   - Differ
+  - LNZTreeView
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Differ
+    - LNZTreeView
     - RxCocoa
     - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
   Differ: ca4350872e32a1aeedf3d9e2d9e47127833bfa9c
+  LNZTreeView: f04b4a96e5780f5071f8c08b0f6f6554775e46f4
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: a3b5fc12833a56ddce5f5e564359d3168ce17dd0
+PODFILE CHECKSUM: 705fdfe4d58cd8fafb61556f435d637a71fc8360
 
 COCOAPODS: 1.6.1
