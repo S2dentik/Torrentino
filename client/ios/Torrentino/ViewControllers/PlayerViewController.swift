@@ -17,6 +17,7 @@ final class PlayerViewController: UIViewController {
 
     func setup(with url: URL) {
         playerViewController.player = AVPlayer(url: url)
+        playerViewController.player?.play()
     }
 
     override func viewDidLoad() {
