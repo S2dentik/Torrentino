@@ -13,12 +13,45 @@ extension FileNode: TreeNodeProtocol {
 }
 
 final class FileNodeTableViewCell: UITableViewCell {
+    private var node: FileNode?
+
     override func layoutSubviews() {
         super.layoutSubviews();
         guard var imageFrame = imageView?.frame else { return }
         let offset = CGFloat(indentationLevel) * indentationWidth
         imageFrame.origin.x += offset
         imageView?.frame = imageFrame
+    }
+
+    func configure(with node: FileNode) {
+        self.node = node
+        backgroundColor = #colorLiteral(red: 0.176448822, green: 0.1764850318, blue: 0.1547711492, alpha: 1)
+        contentView.backgroundColor = #colorLiteral(red: 0.176448822, green: 0.1764850318, blue: 0.1547711492, alpha: 1)
+        textLabel?.lineBreakMode = .byTruncatingMiddle
+        textLabel?.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        if node.type == .folder {
+            imageView?.image = #imageLiteral(resourceName: "folder").withRenderingMode(.alwaysTemplate)
+            imageView?.tintColor = #colorLiteral(red: 0, green: 0.7543834448, blue: 0.7387440801, alpha: 1)
+        } else {
+            imageView?.image = #imageLiteral(resourceName: "file").withRenderingMode(.alwaysTemplate)
+            imageView?.tintColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        }
+        textLabel?.text = node.name
+        let convertibleExtensions = ["webm", "mkv", "avi", "flv", "mov", "mpeg", "3gp"]
+        if let fileExtension = node.name.components(separatedBy: ".").last,
+            convertibleExtensions.contains(fileExtension) {
+            let button = UIButton(type: .custom)
+            button.setImage(#imageLiteral(resourceName: "m4p-file").withRenderingMode(.alwaysTemplate), for: UIControl.State())
+            button.tintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+            button.addTarget(self, action: #selector(convertFile), for: .touchUpInside)
+            button.frame.size = CGSize(width: 30, height: 30)
+            accessoryView = button
+        }
+    }
+
+    @objc private func convertFile(_ sender: UIButton) {
+        guard let id = node?.id else { return }
+        API.shared.convertVideo(with: id)
     }
 }
 
@@ -82,24 +115,8 @@ final class FilesViewController: UIViewController, LNZTreeViewDataSource, LNZTre
             withIdentifier: "FileNodeTableViewCell",
             for: node,
             inSection: indexPath.section
-        )
-        cell.contentView.backgroundColor = #colorLiteral(red: 0.176448822, green: 0.1764850318, blue: 0.1547711492, alpha: 1)
-        cell.backgroundColor = #colorLiteral(red: 0.176448822, green: 0.1764850318, blue: 0.1547711492, alpha: 1)
-        cell.textLabel?.lineBreakMode = .byTruncatingMiddle
-        cell.textLabel?.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-        if node.type == .folder {
-            cell.imageView?.image = #imageLiteral(resourceName: "folder").withRenderingMode(.alwaysTemplate)
-            cell.imageView?.tintColor = #colorLiteral(red: 0, green: 0.7543834448, blue: 0.7387440801, alpha: 1)
-        } else {
-            cell.imageView?.image = #imageLiteral(resourceName: "file").withRenderingMode(.alwaysTemplate)
-            cell.imageView?.tintColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-        }
-        cell.textLabel?.text = node.name
-        if node.isExpandable {
-            cell.detailTextLabel?.text = "\(node.children.count) files"
-        }
-
+        ) as! FileNodeTableViewCell
+        cell.configure(with: node)
         return cell
     }
 
@@ -116,14 +133,13 @@ final class FilesViewController: UIViewController, LNZTreeViewDataSource, LNZTre
         tableView?.indexPathsForSelectedRows?.forEach { indexPath in
             tableView?.deselectRow(at: indexPath, animated: true)
         }
-        let node: FileNode = {
+        play(node: {
             if let parent = parentNode as? FileNode {
                 return parent.children[indexPath.row]
             } else {
                 return nodes[indexPath.row]
             }
-        }()
-        play(node: node)
+        }())
     }
 
     private func play(node: FileNode) {
@@ -133,7 +149,8 @@ final class FilesViewController: UIViewController, LNZTreeViewDataSource, LNZTre
             controller.loadView()
             controller.viewDidLoad()
             self?.present(controller, animated: true, completion: nil)
-            controller.setup(with: url.url)
+            let fullURL = API.shared.currentHost.url(with: url.port).appendingPathComponent(url.url)
+            controller.setup(with: fullURL)
         }, onError: { [weak self] error in
             self?.alert(about: error, onRetry: { [weak self] in self?.play(node: node) })
         }).disposed(by: disposeBag)

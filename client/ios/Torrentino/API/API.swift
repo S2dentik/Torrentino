@@ -67,7 +67,8 @@ final class FileNode: Decodable {
 }
 
 struct VideoURL: Decodable {
-    let url: URL
+    let port: Port
+    let url: String
 }
 
 struct IP: Codable {
@@ -126,6 +127,15 @@ enum Host: Codable {
             return URL(string: "\(scheme.rawValue)://\(ip.stringValue)")!
         case .name(let scheme, let url):
             return URL(string: "\(scheme.rawValue)://\(url.absoluteString)")!
+        }
+    }
+
+    func url(with port: Port) -> URL {
+        switch self {
+        case .ip(let scheme, let ip, _):
+            return URL(string: "\(scheme.rawValue)://\(ip.stringValue):\(port)")!
+        case .name(let scheme, let url):
+            return URL(string: "\(scheme.rawValue)://\(url.absoluteString):\(port)")!
         }
     }
 
@@ -219,8 +229,7 @@ final class API {
         components.queryItems = [URLQueryItem(name: "id", value: id)]
         let finalURL = components.url!
         let request = URLRequest(url: finalURL)
-        let task = URLSession.shared.dataTask(with: request) { _, _, _ in }
-        task.resume()
+        URLSession.shared.dataTask(with: request) { _, _, _ in }.resume()
     }
 
     func getItems(for query: String) -> Observable<[TorrentItem]> {
@@ -278,31 +287,39 @@ final class API {
     }
 
     func getVideoURL(for id: Int) -> Observable<VideoURL> {
-        return .just(VideoURL(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
-//        let url = host.url.appendingPathComponent("/video_url")
-//        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-//        components.queryItems = [URLQueryItem(name: "id", value: String(id))]
-//        let finalURL = components.url!
-//        let request = URLRequest(url: finalURL)
-//        return Observable<VideoURL>.create { observer in
-//            let task = URLSession.shared.dataTask(with: request) { data, _, error in
-//                if let error = error {
-//                    observer.onError(error)
-//                } else if let data = data {
-//                    do {
-//                        let url = try JSONDecoder().decode(VideoURL.self, from: data)
-//                        observer.onNext(url)
-//                        observer.onCompleted()
-//                    } catch {
-//                        observer.onError(error)
-//                    }
-//                } else {
-//                    observer.onCompleted()
-//                }
-//            }
-//            task.resume()
-//            return Disposables.create(with: task.cancel)
-//        }.observeOn(MainScheduler.instance)
+        let url = host.url.appendingPathComponent("/video_url")
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        components.queryItems = [URLQueryItem(name: "id", value: String(id))]
+        let finalURL = components.url!
+        let request = URLRequest(url: finalURL)
+        return Observable<VideoURL>.create { observer in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                if let error = error {
+                    observer.onError(error)
+                } else if let data = data {
+                    do {
+                        let url = try JSONDecoder().decode(VideoURL.self, from: data)
+                        observer.onNext(url)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(error)
+                    }
+                } else {
+                    observer.onCompleted()
+                }
+            }
+            task.resume()
+            return Disposables.create(with: task.cancel)
+        }.observeOn(MainScheduler.instance)
+    }
+
+    func convertVideo(with id: Int) {
+        let url = host.url.appendingPathComponent("/convert_video")
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        components.queryItems = [URLQueryItem(name: "id", value: String(id))]
+        let finalURL = components.url!
+        let request = URLRequest(url: finalURL)
+        URLSession.shared.dataTask(with: request) { _, _, _ in }.resume()
     }
 
     func getRecurentStatus() -> Observable<[TorrentItem]> {
